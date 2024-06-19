@@ -8,7 +8,7 @@ class APIKey(models.Model):
     prefix = models.CharField(max_length=8, primary_key=True)
     hashed_key = models.CharField(max_length=100)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    label = models.CharField(max_length=40)
+    label = models.CharField(max_length=40, unique=True)
     revoked = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     expires_at = models.DateTimeField(null=True, blank=True)
